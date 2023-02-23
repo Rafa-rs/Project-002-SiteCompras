@@ -1,0 +1,73 @@
+<div class="container">
+  <div class="oferta m-3" *ngIf="oferta !== undefined">
+    <!--
+    <div class="row">
+      <div class="col">
+        <a [routerLink]="['/oferta',1]">Oferta 1</a>
+        <a [routerLink]="['/oferta',3]">Oferta 3</a>
+        <a [routerLink]="['/oferta',6]">Oferta 6</a>
+      </div>
+    </div>
+    -->
+    <div class="row">
+      <div class="col">
+        <h4>{{ oferta.descricao_oferta }}</h4>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6">
+        <div class="img_capa">
+          <img [src]= "oferta.imagens[0].url" />
+        </div>
+
+        <div class="thumbnails m-3">
+          <img *ngFor= "let img of oferta.imagens" [src]= "img.url" />
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="row">
+          <div class="col text-center">
+            <p>Por apenas</p>
+          </div>
+          
+        </div>
+
+        <div class="row">
+          <div class="col text-center">
+            <h1>{{ oferta.valor | currency : 'BRL' }}</h1>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col text-center">
+            <button 
+            type="button" 
+            class="btn btn-warning btn-lg"
+            (click)= "adicionarItemCarrinho(this.oferta)"
+          >Adicionar ao carrinho</button>
+          </div>
+        </div>
+          
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="row" style="margin-bottom: 25px; margin-bottom: 150px">
+    <div class="col">
+      <nav>
+        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+          <button class="nav-link active" data-bs-toggle="tab" routerLink="como-usar" type="button" role="tab" >Como Usar</button>
+          <button class="nav-link" data-bs-toggle="tab" routerLink="onde-fica" type="button" role="tab" >Onde Fica</button>
+        </div>
+      </nav>
+      <div class="tab-content" id="nav-tabContent">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
+
+</div>
